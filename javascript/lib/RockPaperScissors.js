@@ -9,7 +9,7 @@ Player.prototype.picks = function(pick) {
 }
 
 function Game (player1, player2) {
-	console.log("New game created")
+	console.log("New game created");
 	this.player1 = player1;
 	this.player2 = player2;
 	
@@ -18,12 +18,13 @@ function Game (player1, player2) {
 
 Game.prototype.winner = function() {
 	//return player1;
-	if(pairs[this.player1.pick].contains(this.player2.pick)) {
+	if(pairs[this.player1.pick].contains(this.player2.pick)) {		
 		return this.player1;
 	} else if(pairs[this.player2.pick].contains(this.player1.pick)) {
 		return this.player2;
 	} else {
 		// Draw game
+		console.log("the game is a draw");
 		return null;
 	}
 }

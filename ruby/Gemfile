@@ -1,4 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rspec'
-gem 'jasmine'
+gem 'sinatra'
+gem 'rack-flash3'
+
+group :development, :test do
+	gem 'rspec'
+	gem 'capybara'
+	gem 'shotgun'
+	gem 'cucumber-sinatra'
+	gem 'guard-cucumber'
+end
