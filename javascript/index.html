@@ -2,16 +2,7 @@
 <html>
   <head>
     <title>Rock Paper Scissors Lizard Spock</title>
-    <style>
-    body {
-      font-family: 'Helvetica Neue';
-      margin: 15px 0 0 30px;
-    }
-    .choices img {
-      width: 80px;
-      margin-right: 30px;
-    }
-    </style>
+    <link rel="stylesheet" type="text/css" href="public/css/application.css" />
   </head>
   <body>
     <h1>Rock Paper Scissors Lizard Spock</h1>
@@ -22,25 +13,49 @@
       <img src="images/lizard.png" data-name="lizard">
       <img src="images/spock.png" data-name="spock">
     </div>
+    <h3 id="p1select"></h3>
+    <h3 id="p2select"></h3>
     <h3 id="result"></h3>
+     <input id="Button1" type="button" value="Restart game" />
 
     <script src='http://code.jquery.com/jquery-2.0.3.js'></script>
     <script src='lib/RockPaperScissors.js'></script>
     <script>
+
+      var player1;
+      var player2;
+      var game;
+
+      function newGame() {
+        player1 = new Player();
+        player2 = new Player();
+        game = new Game(player1, player2);
+      }
+
       $(document).ready(function() {
-        var player1 = new Player();
-        var player2 = new Player();
-        var game = new Game(player1, player2);
+
+        newGame();
 
         $('.choices img').click(function() {
-          player1.picks($(this).data('name'));
-          player2.picks('rock');
-
-          $("#result").html(game.winner());
-
-          // alert('You picked ' + );
+          if (player1.pick == undefined)
+            {
+              player1.picks($(this).data('name'));
+              $("#p1select").html('player 1 picks: ' + player1.pick.name);
+              
+            }
+          else
+            {
+              player2.picks($(this).data('name'));
+              $("#p2select").html('player 2 picks: ' + player2.pick.name);
+              $("#result").html(game.winner()).show("slow");
+            }
+        });
+         // $('#Button1').click(newGame);
+         $('#Button1').click(function() {
+                location.reload();
         });
       });
+
     </script>
   </body>
 </html>

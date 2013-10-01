@@ -38,9 +38,9 @@ Game.prototype.winner = function() {
   var p1Wins = this.player1.pick.beats(this.player2.pick);
   var p2Wins = this.player2.pick.beats(this.player1.pick);
 
-  // console.log(p1Wins || p2Wins || 'draw');
+  console.log(p1Wins || p2Wins || 'draw');
   if(p1Wins) return p1Wins;
   if(p2Wins) return p2Wins;
   
-  return 'Draw';
+  return 'draw';
 }
